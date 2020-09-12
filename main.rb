@@ -2,13 +2,14 @@ require 'csv'
 
 class Gramclass
 
-  attr_accessor :file, :name
+  attr_accessor :file, :name, :ranswer
 
   def initialize(name, file)
     @name = name
     @file = CSV.read(file.to_s, col_sep: ';')
     @title = @file.shift
     @size = @file.size
+    @ranswer = ""
   end
 
   def welcome
@@ -18,9 +19,10 @@ class Gramclass
   def randomWord
     n = rand(0..@size)
     choice = @file[n][0]
+    @ranswer = @file[n][1]
     puts choice
     answer = gets.chomp
-    answer == @file[n][1] 
+    (@file[n][1].split("/")).include? answer
   end
 
 end
@@ -36,13 +38,12 @@ linkwords.welcome
 while 1 != 0
   result = linkwords.randomWord
   round += 1
-  puts round
   if result == true
     r += 1
-    puts r
-    puts "#{((r/round)*100).to_i}% de bonnes réponses"
+    puts "Bonne réponse"
+    puts "#{((r / round) * 100).to_i}% de bonnes réponses"
+  else
+    puts "Mauvaise réponse, c'étais #{linkwords.ranswer}"
   end
-
-
 end
 
