@@ -27,9 +27,7 @@ class Gramclass
     if rof == false
       @rfile << @rfile[n]
       @size = @rfile.size
-      puts @size
     end
-    puts @rfile.to_s
     rof
   end
 
@@ -49,9 +47,10 @@ while 1 != 0
     r += 1
     puts "Bonne réponse"
     puts "#{((r / round) * 100).to_i}% de bonnes réponses"
+    puts ""
   else
     puts "Mauvaise réponse, c'étais #{linkwords.ranswer}"
-
+    puts ""
   end
 end
 
