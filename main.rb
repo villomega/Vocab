@@ -10,7 +10,7 @@ class Gramclass
     @title = @file.shift
     @rfile = @file
     @size = @rfile.size
-    @ranswer = ""
+    @ranswer = ''
   end
 
   def welcome
@@ -23,7 +23,7 @@ class Gramclass
     @ranswer = @rfile[n][1]
     puts choice
     answer = gets.chomp
-    rof = (@rfile[n][1].split("/")).include? answer
+    rof = (@rfile[n][1].split('/')).include? answer
     if rof == false
       @rfile << @rfile[n]
       @size = @rfile.size
@@ -37,7 +37,7 @@ end
 round = 0.0
 r = 0.0
 
-linkwords = Gramclass.new "les Linking words", 'SRC/link_words.csv'
+linkwords = Gramclass.new 'les Linking words', 'SRC/link_words.csv'
 linkwords.welcome
 
 while 1 != 0
@@ -45,12 +45,12 @@ while 1 != 0
   round += 1
   if result == true
     r += 1
-    puts "Bonne réponse"
+    puts 'Bonne réponse'
     puts "#{((r / round) * 100).to_i}% de bonnes réponses"
-    puts ""
   else
     puts "Mauvaise réponse, c'étais #{linkwords.ranswer}"
-    puts ""
   end
+  puts ''
+
 end
 
