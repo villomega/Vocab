@@ -1,5 +1,8 @@
 require 'csv'
 
+puts "Victor est le rois du monde"
+puts "paypal.me/calipoou"
+
 class Gramclass
 
   attr_accessor :rfile, :name, :ranswer
