@@ -1,8 +1,5 @@
 require 'csv'
 
-puts "Victor est le rois du monde"
-puts "paypal.me/calipoou"
-
 class Gramclass
 
   attr_accessor :rfile, :name, :ranswer
@@ -39,19 +36,35 @@ end
 
 round = 0.0
 r = 0.0
+classes = `ls SRC`.split " "
 
-linkwords = Gramclass.new 'les Linking words', 'SRC/link_words.csv'
-linkwords.welcome
+
+
+
+puts "Quelle classe voulez vous réviser?"
+
+
+for i in 1..classes.size
+  puts "#{i}- #{classes[i-1]}"
+end
+
+choice = gets.to_i - 1
+
+puts "Test: #{classes[choice]}"
+
+
+gram = Gramclass.new "#{classes[choice].split(".")[0]}", "SRC/#{classes[choice]}"
+gram.welcome
 
 while 1 != 0
-  result = linkwords.randomWord
+  result = gram.randomWord
   round += 1
   if result == true
     r += 1
     puts 'Bonne réponse'
     puts "#{((r / round) * 100).to_i}% de bonnes réponses"
   else
-    puts "Mauvaise réponse, c'étais #{linkwords.ranswer}"
+    puts "Mauvaise réponse, c'étais #{gram.ranswer}"
   end
   puts ''
 
