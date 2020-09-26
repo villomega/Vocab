@@ -56,7 +56,9 @@ puts "Test: #{classes[choice]}"
 gram = Gramclass.new "#{classes[choice].split(".")[0]}", "SRC/#{classes[choice]}"
 gram.welcome
 
+
 while 1 != 0
+  puts "#{(round.to_i + 1).to_s}]"
   result = gram.randomWord
   round += 1
   if result == true
