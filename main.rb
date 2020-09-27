@@ -64,6 +64,7 @@ while 1 != 0
   if result == true
     r += 1
     puts 'Bonne réponse'
+    puts "Tu aurais pu mettre #{gram.ranswer}"
     puts "#{((r / round) * 100).to_i}% de bonnes réponses"
   else
     puts "Mauvaise réponse, c'étais #{gram.ranswer}"
