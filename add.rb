@@ -1,6 +1,6 @@
-classes = `ls SRC`.split " "
+classes = `ls SRC`.split ' '
 
-puts "Quel fichier voulez vous éditer?"
+puts 'Quel fichier voulez vous éditer?'
 
 
 for i in 1..classes.size
@@ -10,9 +10,9 @@ end
 choice = gets.to_i - 1
 
 while 1!=0
-	puts "Francais:"
+	puts 'Francais:'
 	fr = gets.chomp
-	puts "Autre langue:"
+	puts 'Autre langue:'
 	trad = gets.chomp
 	puts "#{fr}:#{trad}"
 end
