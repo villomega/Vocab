@@ -46,7 +46,6 @@ begin
     classe.each do |i|
       classes << i.split("/")[1]
     end
-    puts classes.inspect
 end
 
 
