@@ -1,18 +1,26 @@
-classes = `ls SRC`.split ' '
+puts "Quel fichier voulez vous éditer?"
+puts "0- En créer un nouveau"
 
-puts 'Quel fichier voulez vous éditer?'
-
+classes = []
+classe = Dir['SRC/*']
+classe.each do |i|
+	classes << i.split("/")[1]
+end
 
 for i in 1..classes.size
-  puts "#{i}- #{classes[i-1]}"
+	puts "#{i}- #{classes[i-1]}"
 end
 
-choice = gets.to_i - 1
+c = gets.to_i - 1
 
-while 1!=0
-	puts 'Francais:'
-	fr = gets.chomp
-	puts 'Autre langue:'
-	trad = gets.chomp
-	puts "#{fr}:#{trad}"
+if c == -1
+  puts "Nom du fichier:"
+  name = gets.chomp.to_s + ".csv"
+  puts "Langue (autre que français):"
+  language = gets.chomp
+  puts "SRC/"+name
+  file = File.open("SRC/"+name, "a+")
+  file.write "Francais;" + language
 end
+
+
