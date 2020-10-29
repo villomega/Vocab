@@ -37,15 +37,10 @@ end
 round = 0.0
 r = 0.0
 
-begin
-  classes = `ls SRC`.split " "
-  puts "ok"
-  rescue
-    classes = []
-    classe = Dir['SRC/*']
-    classe.each do |i|
-      classes << i.split("/")[1]
-    end
+classes = []
+classe = Dir['SRC/*']
+classe.each do |i|
+  classes << i.split("/")[1]
 end
 
 
