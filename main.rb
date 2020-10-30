@@ -1,4 +1,5 @@
 require 'csv'
+system('clear')
 
 class Gramclass
 
