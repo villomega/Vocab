@@ -1,3 +1,18 @@
+class Gram
+
+  attr_accessor :name, :file
+
+  def initialize(name, file)
+    @name = name
+    @file = file
+  end
+
+  def welcome
+    puts "Vous allez modifier #{@name}"
+  end
+
+end
+
 puts "Quel fichier voulez vous éditer?"
 puts "0- En créer un nouveau"
 
@@ -7,20 +22,26 @@ classe.each do |i|
 	classes << i.split("/")[1]
 end
 
-for i in 1..classes.size
-	puts "#{i}- #{classes[i-1]}"
-end
+(1..classes.size).each { |i|
+  puts "#{i}- #{classes[i - 1].split(".")[0]}"
+}
 
 c = gets.to_i - 1
 
 if c == -1
   puts "Nom du fichier:"
-  name = gets.chomp.to_s + ".csv"
+  file = gets.chomp.to_s + ".csv"
   puts "Langue (autre que français):"
   language = gets.chomp
-  puts "SRC/"+name
-  file = File.open("SRC/"+name, "a+")
-  file.write "Francais;" + language
+  f = File.open("SRC/"+file, "a+")
+  f.write "Francais;" + language
+else
+  file = classes[c]
 end
+
+gramclass = Gram.new "#{file.split(".")[0]}", "SRC/" + file
+gramclass.welcome
+
+
 
 

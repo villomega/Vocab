@@ -50,7 +50,7 @@ puts "Quelle classe voulez vous réviser?"
 
 
 for i in 1..classes.size
-  puts "#{i}- #{classes[i-1]}"
+  puts "#{i}- #{classes[i-1].split(".")[0]}"
 end
 
 choice = gets.to_i - 1
@@ -71,7 +71,6 @@ while 1 != 0
     puts 'Bonne réponse'
     puts "Tu aurais pu mettre #{gram.ranswer}"
     puts "#{((r / round) * 100).to_i}% de bonnes réponses"
-    #puts gram.rfile.to_s
   else
     puts "Mauvaise réponse, c'étais #{gram.ranswer}"
   end
