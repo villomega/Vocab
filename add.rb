@@ -10,17 +10,22 @@ class Gram
     @file = file
     @content = CSV.read(file.to_s, col_sep: ';')
     @language = @content[0][1]
+    @rang
   end
 
   def welcome
     puts "Vous allez modifier #{@name}"
   end
 
+  def load_file
+    @content = CSV.read(file.to_s, col_sep: ';')
+  end
+
   def check french
     n = 0
     for i in 0...@content.size
-      if @content[i][0].to_s.include?(french)
-        puts "oui"
+      if @content[i][0].split(" ").include?(french)
+        @rang = i + 1
         n += 1
       end
     end
@@ -32,10 +37,13 @@ class Gram
   end
 
   def newword french, other
-    if check(french) == true
+    if check(french)
       puts "Contenu"
+
     else
-      puts "Non!"
+      File.open(@file, "a+") do |file|
+        file.puts french + ";" + other + "\n"
+      end
     end
   end
 end
@@ -61,7 +69,10 @@ if c == -1
   puts "Langue (autre que français):"
   language = gets.chomp
   f = File.open("SRC/"+file, "a+")
-  f.write "Francais;" + language
+  f.write "Francais;" + language + "\n"
+  f.close
+  puts "Le programme vient de s'arréter, veuillez le relancer pour voir les modifications."
+  exit
 else
   file = classes[c]
 end
@@ -70,6 +81,7 @@ gramclass = Gram.new "#{file.split(".")[0]}", "SRC/" + file
 gramclass.welcome
 
 while 1 != 0
+  gramclass.load_file
   puts "Francais"
   fr = gets.chomp
   puts gramclass.language
