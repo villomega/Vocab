@@ -30,9 +30,9 @@ class Gram
       end
     end
     if n > 0
-      return true
+      true
     else
-      return false
+      false
     end
   end
 
@@ -89,6 +89,4 @@ while 1 != 0
   other = gets.chomp
   gramclass.newword fr, other
 end
-
-
 

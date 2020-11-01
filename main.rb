@@ -18,7 +18,7 @@ class Gramclass
     puts "Vous allez étudier #{@name}"
   end
 
-  def randomWord
+  def randomword
     n = rand(0...@size)
     choice = @rfile[n][0]
     @ranswer = @rfile[n][1]
@@ -64,7 +64,7 @@ gram.welcome
 
 while 1 != 0
   puts "#{(round.to_i + 1).to_s}]"
-  result = gram.randomWord
+  result = gram.randomword
   round += 1
   if result == true
     r += 1
