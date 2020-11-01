@@ -25,7 +25,7 @@ class Gram
     n = 0
     for i in 0...@content.size
       if @content[i][0].split(" ").include?(french)
-        @rang = i + 1
+        @rang = i
         n += 1
       end
     end
@@ -38,8 +38,9 @@ class Gram
 
   def newword french, other
     if check(french)
-      puts "Contenu"
-
+      lines = File.readlines(@file)
+      lines[@rang] = lines[@rang].chomp + "/" + other + "\n"
+      File.open(@file, 'w') { |f| f.write(lines.join) }
     else
       File.open(@file, "a+") do |file|
         file.puts french + ";" + other + "\n"
