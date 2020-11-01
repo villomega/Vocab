@@ -21,14 +21,14 @@ class Gram
     @content = CSV.read(file.to_s, col_sep: ';')
   end
 
-  def check french
+  def check(french)
     n = 0
-    for i in 0...@content.size
-      if @content[i][0].split(" ").include?(french)
+    (0...@content.size).each { |i|
+      if @content[i][0] == french
         @rang = i
         n += 1
       end
-    end
+    }
     if n > 0
       true
     else
@@ -36,7 +36,7 @@ class Gram
     end
   end
 
-  def newword french, other
+  def newword(french, other)
     if check(french)
       lines = File.readlines(@file)
       lines[@rang] = lines[@rang].chomp + "/" + other + "\n"
