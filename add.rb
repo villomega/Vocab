@@ -53,9 +53,9 @@ puts "Quel fichier voulez vous éditer?"
 puts "0- En créer un nouveau"
 
 classes = []
-classe = Dir['SRC/*']
+classe = Dir["#{__dir__}/SRC/*"]
 classe.each do |i|
-	classes << i.split("/")[1]
+	classes << i.split("/").last
 end
 
 (1..classes.size).each { |i|
@@ -69,7 +69,7 @@ if c == -1
   file = gets.chomp.to_s + ".csv"
   puts "Langue (autre que français):"
   language = gets.chomp
-  f = File.open("SRC/"+file, "a+")
+  f = File.open("#{__dir__}/SRC/"+file, "a+")
   f.write "Francais;" + language + "\n"
   f.close
   puts "Le programme vient de s'arréter, veuillez le relancer pour voir les modifications."
@@ -78,7 +78,7 @@ else
   file = classes[c]
 end
 
-gramclass = Gram.new "#{file.split(".")[0]}", "SRC/" + file
+gramclass = Gram.new "#{file.split(".")[0]}", "#{__dir__}/SRC/" + file
 gramclass.welcome
 
 while 1 != 0

@@ -39,9 +39,9 @@ round = 0.0
 r = 0.0
 
 classes = []
-classe = Dir['SRC/*']
+classe = Dir["#{__dir__}/SRC/*"]
 classe.each do |i|
-  classes << i.split("/")[1]
+  classes << i.split("/").last
 end
 
 
@@ -58,7 +58,7 @@ choice = gets.to_i - 1
 puts "Test: #{classes[choice]}"
 
 
-gram = Gramclass.new "#{classes[choice].split(".")[0]}", "SRC/#{classes[choice]}"
+gram = Gramclass.new "#{classes[choice].split(".")[0]}", "#{__dir__}/SRC/#{classes[choice]}"
 gram.welcome
 
 
